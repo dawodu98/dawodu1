@@ -13,7 +13,7 @@ pipeline {
         stage('done') {
             steps {
                 // Run your Python tests (replace 'test.py' with your test script)
-                echo "done"
+               sh 'echo done'
             }
         }
         
