@@ -10,20 +10,7 @@ pipeline {
         }
         
         
-        stage('done') {
-            steps {
-                // Run your Python tests (replace 'test.py' with your test script)
-               sh 'echo done'
-            }
-        }
-        
-        stage('Cleanup') {
-            steps {
-                // Deactivate the virtual environment and remove it
-                sh 'deactivate'
-                sh 'rm -rf venv'
-            }
-        }
+       
 
     
 
