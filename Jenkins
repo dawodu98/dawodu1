@@ -4,15 +4,43 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Check out the code from your version control system (e.g., Git)
+                // This step checks out your code from your version control system (e.g., Git)
                 checkout scm
             }
         }
         
+        stage('Build') {
+            steps {
+                // This step installs Python and any required dependencies
+                sh 'python -m venv venv'
+                sh 'source venv/bin/activate'
+                sh 'pip install -r requirements.txt'
+            }
+        }
         
-       
-
+        stage('Test') {
+            steps {
+                // This step runs your Python tests
+                sh 'python -m unittest discover tests'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // This step deploys your Python application (e.g., to a server)
+                sh 'python deploy.py'
+            }
+        }
+    }
     
-
+    post {
+        success {
+            // This block runs if the pipeline succeeds
+            echo 'Pipeline succeeded! Your Python application is ready for deployment.'
+        }
+        failure {
+            // This block runs if the pipeline fails
+            echo 'Pipeline failed! Check the build and test stages for issues.'
+        }
     }
 }
