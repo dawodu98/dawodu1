@@ -9,18 +9,6 @@ pipeline {
             }
         }
         
-        stage('Build') {
-            steps {
-                // Install virtualenv and create a Python virtual environment
-                sh 'python -m venv venv'
-                
-                // Activate the virtual environment
-                sh 'source venv/bin/activate'
-                
-                // Install dependencies using pip
-                sh 'pip install -r requirements.txt'
-            }
-        }
         
         stage('Test') {
             steps {
@@ -36,19 +24,8 @@ pipeline {
                 sh 'rm -rf venv'
             }
         }
-    }
+
     
-    post {
-        success {
-            // If the build and tests are successful, you can deploy or do further actions here
-            echo 'Build and tests passed. Deploying...'
-            // Add your deployment steps here
-        }
-        
-        failure {
-            // If the build or tests fail, you can take appropriate actions here
-            echo 'Build or tests failed. Not deploying.'
-            // Add error handling or notifications here
-        }
+
     }
 }
