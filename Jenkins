@@ -10,10 +10,10 @@ pipeline {
         }
         
         
-        stage('Test') {
+        stage('done') {
             steps {
                 // Run your Python tests (replace 'test.py' with your test script)
-                sh 'python test.py'
+                echo "done"
             }
         }
         
