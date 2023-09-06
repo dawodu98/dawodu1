@@ -12,14 +12,14 @@ pipeline {
         stage('Test') {
             steps {
                 // This step runs your Python tests
-                sh 'python -m unittest discover tests'
+                sh 'pip3 -m unittest discover tests'
             }
         }
         
         stage('Deploy') {
             steps {
                 // This step deploys your Python application (e.g., to a server)
-                sh 'python deploy.py'
+                sh 'pip3 deploy.py'
             }
         }
     
