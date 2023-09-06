@@ -24,15 +24,6 @@ pipeline {
         }
     
     
-    post {
-        success {
-            // This block runs if the pipeline succeeds
-            echo 'Pipeline succeeded! Your Python application is ready for deployment.'
-        }
-        failure {
-            // This block runs if the pipeline fails
-            echo 'Pipeline failed! Check the build and test stages for issues.'
-        }
-    }
+
 }
 }
