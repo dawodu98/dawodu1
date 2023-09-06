@@ -8,16 +8,7 @@ pipeline {
                 checkout scm
             }
         }
-        
-        stage('Build') {
-            steps {
-                // This step installs Python and any required dependencies
-                sh 'python -m venv venv'
-                sh 'source venv/bin/activate'
-                sh 'pip install -r requirements.txt'
-            }
-        }
-        
+  
         stage('Test') {
             steps {
                 // This step runs your Python tests
@@ -31,7 +22,7 @@ pipeline {
                 sh 'python deploy.py'
             }
         }
-    }
+    
     
     post {
         success {
@@ -43,4 +34,5 @@ pipeline {
             echo 'Pipeline failed! Check the build and test stages for issues.'
         }
     }
+}
 }
